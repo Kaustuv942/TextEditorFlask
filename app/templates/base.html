@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale="1.0">
+    <meta http-equiv="X-UA-Compatible" >
+  
+    {% if title %}
+      <title>{{ title }} - TextEditor</title>
+      {% else %}
+      <title>Welcome to TextEditor by kkc</title>
+      {% endif %}
+    <link rel="stylesheet" type="text/css"  href="Style.css">
+    <style>
+          
+            li:last-child {
+                border-bottom: none;
+                }
+            .active {
+                background-color: #4CAF50;
+                color: white;
+                }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+                }
+
+            li {
+                float: left;
+                }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                }
+
+                
+            li a:hover {
+                background-color: #111;
+                }
+            
+                            #editor {
+            box-shadow: 0 0 2px #CCC;
+            min-height: 150px;
+            overflow: auto;
+            padding: 1em;
+            margin-top: 20px;
+            resize: vertical;
+            outline: none;
+            }
+
+            .toolbar {
+            text-align: center;
+            }
+
+            .toolbar a,
+            .fore-wrapper,
+            .back-wrapper {
+            border: 1px solid #AAA;
+            background: #FFF;
+            font-family: 'Candal';
+            border-radius: 1px;
+            color: black;
+            padding: 5px;
+            width: 1.5em;
+            margin: -2px;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            box-shadow: 0px 1px 0px #CCC;
+            }
+
+            .toolbar a:hover,
+            .fore-wrapper:hover,
+            .back-wrapper:hover {
+            background: #f2f2f2;
+            border-color: #8c8c8c;
+            }
+
+            a[data-command='redo'],
+            a[data-command='strikeThrough'],
+            a[data-command='justifyFull'],
+            a[data-command='insertOrderedList'],
+            a[data-command='outdent'],
+            a[data-command='p'],
+            a[data-command='superscript'] {
+            margin-right: 5px;
+            border-radius: 0 3px 3px 0;
+            }
+
+            a[data-command='undo'],
+            .fore-wrapper,
+            a[data-command='justifyLeft'],
+            a[data-command='insertUnorderedList'],
+            a[data-command='indent'],
+            a[data-command='h1'],
+            a[data-command='subscript'] {
+            border-radius: 3px 0 0 3px;
+            }
+
+            a.palette-item {
+            height: 1em;
+            border-radius: 3px;
+            margin: 2px;
+            width: 1em;
+            border: 1px solid #CCC;
+            }
+
+            a.palette-item:hover {
+            border: 1px solid #CCC;
+            box-shadow: 0 0 3px #333;
+            }
+
+            .fore-palette,
+            .back-palette {
+            display: none;
+            }
+
+            .fore-wrapper,
+            .back-wrapper {
+            display: inline-block;
+            cursor: pointer;
+            }
+
+            .fore-wrapper:hover .fore-palette,
+            .back-wrapper:hover .back-palette {
+            display: block;
+            float: left;
+            position: absolute;
+            padding: 3px;
+            width: 160px;
+            background: #FFF;
+            border: 1px solid #DDD;
+            box-shadow: 0 0 5px #CCC;
+            height: 70px;
+            }
+
+            .fore-palette a,
+            .back-palette a {
+            background: #FFF;
+            margin-bottom: 2px;
+            }
+    </style>
+    <script>
+        var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF', 'FFFFFF'];
+    var forePalette = $('.fore-palette');
+    var backPalette = $('.back-palette');
+  
+    for (var i = 0; i < colorPalette.length; i++) {
+      forePalette.append('<a href="#" data-command="forecolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+      backPalette.append('<a href="#" data-command="backcolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
+    }
+  
+    $('.toolbar a').click(function(e) {
+      var command = $(this).data('command');
+      if (command == 'h1' || command == 'h2' || command == 'p') {
+        document.execCommand('formatBlock', false, command);
+      }
+      if (command == 'forecolor' || command == 'backcolor') {
+        document.execCommand($(this).data('command'), false, $(this).data('value'));
+      }
+      if (command == 'createlink' || command == 'insertimage') {
+        url = prompt('Enter the link here: ', 'http:\/\/');
+        document.execCommand($(this).data('command'), false, url);
+      } else document.execCommand($(this).data('command'), false, null);
+    });
+      </script>
+</head>
+
+<body>
+        <ul>
+
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+
+            
+            {% if current_user.is_anonymous %}
+            <li><a href="{{ url_for('login') }}">login</a></li>
+            {% else %}
+            <li><a href="news.asp">My Edits</a></li>
+            {% endif %}
+            <li><a href="about.asp">About</a></li>
+            {% block title %}{% endblock %}
+        </ul>
+       
+
+        <h1 style="color: white;">
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </h1>
+
+        {% block content %}{% endblock %}
+
+</body>
+</html>
