@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+
+
+
+
+
+{% block title %}
+
+<li style="float:right"> <h1 style="color: white;">Hi, {{ current_user.username }}!</h1></li>
+<li style="float: right;"> <h3 style="color:white"><a href="{{ url_for('logout') }}">Logout</h3></a></li>
+
+
+{% endblock %}
+
+
+{% block content %}
+	<h3>Creator :</h3>
+	<hr>
+	
+	<div class='credits' > <center>
+		Kaustuv K Chattopadhyay		</center>
+		<br>
+		<br>
+		<center>
+		<p>Made with Love, from GLUG, NIT Durgapur</p>
+		</center>
+	</div>
+	<hr>
+	
+	
+	
+
+{% endblock %}

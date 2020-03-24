@@ -154,6 +154,22 @@
    				background:orange;
   				color:black;
             }
+
+            #editor1 {
+            border: 3px inset grey;
+            height: 100px;
+            width: 381px;
+            margin: 10px auto 0;
+          }
+          fieldset {
+            margin: 2px auto 15px;
+            width: 358px;
+          }
+          button {
+            width: 5ex;
+            text-align: center;
+            padding: 1px 3px;
+          }
     </style>
     <script>
         var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF', 'FFFFFF'];
@@ -192,7 +208,7 @@
             {% else %}
             <li><a href="news.asp">My Edits</a></li>
             {% endif %}
-            <li><a href="about.asp">About</a></li>
+            <li><a href="/about">About</a></li>
 
             {% block title %}{% endblock %}
         </ul>
