@@ -1,93 +1,60 @@
 
     {% extends "base.html" %}
 
-    {% block title %}
-    <li style="float:right"> <h1 style="color: white;">Hi, {{ current_user.username }}!</h1></li>
-    <li style="float: right;"> <h3 style="color:white"><a href="{{ url_for('logout') }}">Logout</h3></a></li>
-    {% endblock %}
+  
 
     {% block content %}
 
-    <h1> Type something below</h1>
+    <center><h1> Type something below</h1></center>
     
-    <fieldset>
-      <button class="fontStyle" onclick="document.execCommand( 'bold',false,null);" title="Bold Highlighted Text"><b>B</b>
-      </button>
-      <button class="fontStyle" onclick="document.execCommand('italic',false,null);" title="Italicize Highlighted Text"><i>I</i>
-      </button>
-
-      <button class="fontStyle" onclick="document.execCommand( 'underline',false,null);"><u>U</u>
-      </button>
-    </fieldset>
-
-
     
-<div class="toolbar">
-    <a href="#" data-command='undo'><i class='fa fa-undo'></i></a>
-    <a href="#" data-command='redo'><i class='fa fa-repeat'></i></a>
-    <div class="fore-wrapper"><i class='fa fa-font' style='color:#C96;'></i>
-      <div class="fore-palette">
-      </div>
+
+
+  <div id="textEditor">
+    <div id='theRibbon'>
+          <button id="boldbutton" title="Bold"><b>B</b></button>
+          <button id="italicbutton" title="Italic"><em>I</em></button>
+          <button id="underlinebutton" title="Underline"><u>U</u></button>
+          <input type="color" id="fontcolor" title="Change Font Colour">
+          <input type="color" id="highlighter" title="Highlight Text">
+          <select id="fontChanger">
+              <option value="Times New Roman"> Times New Roman</option>
+              <option value="Tahoma"> Tahoma</option>
+              <option value="cursive"> Cursive</option>
+              <option value="sans-serif"> Sans-Serif</option>
+              <option value="Calibri"> Calibri</option>
+
+
+          </select>
+          <select id="fontSizeChanger">
+            <script>
+              for(var i=1; i<20;i++){
+                i++;
+                document.write("<option value='"+i+"'>"+i+"</option>");
+              }
+            </script>
+          </select>
+          <button id="Undo" title="Undo">&larr;</button>
+          <button id="Redo" title="Redo">&rarr;</button>
+   </div> 
+    <div id="richTextArea">
+      <iframe id="WYSIWYG" name="WYSIWYG" frameborder="0"></iframe>
     </div>
-    <div class="back-wrapper"><i class='fa fa-font' style='background:#C96;'></i>
-      <div class="back-palette">
-      </div>
-    </div>
-    <a href="#" data-command='bold'><i class='fa fa-bold'></i></a>
-    <a href="#" data-command='italic'><i class='fa fa-italic'></i></a>
-    <a href="#" data-command='underline'><i class='fa fa-underline'></i></a>
-    <a href="#" data-command='strikeThrough'><i class='fa fa-strikethrough'></i></a>
-    <a href="#" data-command='justifyLeft'><i class='fa fa-align-left'></i></a>
-    <a href="#" data-command='justifyCenter'><i class='fa fa-align-center'></i></a>
-    <a href="#" data-command='justifyRight'><i class='fa fa-align-right'></i></a>
-    <a href="#" data-command='justifyFull'><i class='fa fa-align-justify'></i></a>
-    <a href="#" data-command='indent'><i class='fa fa-indent'></i></a>
-    <a href="#" data-command='outdent'><i class='fa fa-outdent'></i></a>
-    <a href="#" data-command='insertUnorderedList'><i class='fa fa-list-ul'></i></a>
-    <a href="#" data-command='insertOrderedList'><i class='fa fa-list-ol'></i></a>
-    <a href="#" data-command='h1'>H1</a>
-    <a href="#" data-command='h2'>H2</a>
-    <a href="#" data-command='createlink'><i class='fa fa-link'></i></a>
-    <a href="#" data-command='unlink'><i class='fa fa-unlink'></i></a>
-    <a href="#" data-command='insertimage'><i class='fa fa-image'></i></a>
-    <a href="#" data-command='p'>P</a>
-    <a href="#" data-command='subscript'><i class='fa fa-subscript'></i></a>
-    <a href="#" data-command='superscript'><i class='fa fa-superscript'></i></a>
-  </div> 
-  <div id='editor' contenteditable>
-    <h1>A WYSIWYG Editor.</h1>
-    <p>Try making some changes here. Add your own text or maybe an image.</p>
   </div>
 
 
+    
+
+  
+<script>
+  var fonts=document.querySelectorAll("select#fontChanger>option");
+  for (var i=0 ;i < fonts.length; i++){
+    fonts[i].style.fontFamily = fonts[i].value;
+
+  }
+</script>
  
-  <script>
-    var colorPalette = ['000000', 'FF9966', '6699FF', '99FF66', 'CC0000', '00CC00', '0000CC', '333333', '0066FF', 'FFFFFF'];
-var forePalette = $('.fore-palette');
-var backPalette = $('.back-palette');
-
-for (var i = 0; i < colorPalette.length; i++) {
-  forePalette.append('<a href="#" data-command="forecolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
-  backPalette.append('<a href="#" data-command="backcolor" data-value="' + '#' + colorPalette[i] + '" style="background-color:' + '#' + colorPalette[i] + ';" class="palette-item"></a>');
-}
-
-$('.toolbar a').click(function(e) {
-  var command = $(this).data('command');
-  if (command == 'h1' || command == 'h2' || command == 'p') {
-    document.execCommand('formatBlock', false, command);
-  }
-  if (command == 'forecolor' || command == 'backcolor') {
-    document.execCommand($(this).data('command'), false, $(this).data('value'));
-  }
-  if (command == 'createlink' || command == 'insertimage') {
-    url = prompt('Enter the link here: ', 'http:\/\/');
-    document.execCommand($(this).data('command'), false, url);
-  } else document.execCommand($(this).data('command'), false, null);
-});
-  </script>
-  <script src="javasc.js">
-
-  </script>
+  
 
   {% endblock %}
 

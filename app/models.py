@@ -26,3 +26,14 @@ class User(UserMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
+class Textfile(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20))
+    extension = db.Column(db.String(5))
+    body = db.Column(db.String(2500))
+    timestamp = db.Column(db.DateTime, index=True, default = datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    
+    def __repr__(self):
+        return '<Text {}>'.format(self.body)

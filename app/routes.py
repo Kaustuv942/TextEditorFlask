@@ -1,18 +1,29 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm
+from app.forms import LoginForm, TextForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Textfile
 from werkzeug.urls import url_parse
 from app.forms import RegistrationForm
 
 
 @app.route('/', methods=['GET', 'POST'])
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+    form = TextForm()
+
+    if request.method == 'POST':
+        print(request.form.get('editor'))
+        return 'Data Posted'
     
-    return render_template('index.html',  title='Home')
+    
+    
+
+    
+        
+
+    return render_template('index.html',  title='Home', form=form)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
