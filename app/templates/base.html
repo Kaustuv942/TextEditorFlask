@@ -114,6 +114,18 @@
         fontChanger.addEventListener("change", function(event){
           editor.execCommand("FontName",false, event.target.value)
         }, false);
+        fontSizeChanger.addEventListener("change", function(event){
+          editor.execCommand("FontSize", false, event.target.value);
+        }, false);
+
+        Undo.addEventListener("click", function(){
+          editor.execCommand("undo", false, null);
+        }, false);
+        
+        Redo.addEventListener("click", function(){
+          editor.execCommand("redo", false, null);
+        }, false);
+
       },false);
     </script>
    
