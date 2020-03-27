@@ -11,13 +11,19 @@ import bleach
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
+
+    data = EditorData.query.get(1)
+    print(data.html)
+
+
     if request.method == 'POST':
         new_data = EditorData(html=request.form.get('textpad'))
         db.session.add(new_data)
         db.session.commit()
-        return render_template('index.html', title='Home')
+
+        
    
-    return render_template('index.html',  title='Home')
+    return render_template('index.html',  title='Home', data=data.html)
 
 
 @app.route('/display/<int:id>')
