@@ -36,14 +36,66 @@
           </select>
           <button id="Undo" title="Undo">&larr;</button>
           <button id="Redo" title="Redo">&rarr;</button>
-   </div> 
+  
+  
+        </div> 
+
+ 
     <div id="richTextArea">
       <iframe id="WYSIWYG" name="WYSIWYG" frameborder="0" ></iframe>
+  
     </div>
+    
+
+
+  
+    
+    
   </div>
 
+  <br><br>
+  <br><br>
+  <br><br>
 
+
+
+
+  <p>Hi this is kkc using jQuery</p>
+  <form method="POST">
+      <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:block;"></textarea>
+      <input type="submit" value="Save" >
+  
     
+  </form>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
+
+
+    <script>
+    $(document).ready(function(){
+       $('p').css('color', 'red');
+
+
+    });
+    </script>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#button').click(function(){
+    var text = $('#WYSIWYG').val();
+    $('#goes').text(WYSIWYG);
+
+  });
+});
+  
+
+
+</script>
 
   
 <script>

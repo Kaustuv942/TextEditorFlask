@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{{ url_for('index') }}"> Add New File</a>
+
+<br><br>
+
+
+{{ data|safe }}
+
+{% endblock %}

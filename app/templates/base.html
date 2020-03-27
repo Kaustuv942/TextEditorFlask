@@ -9,7 +9,7 @@
       {% else %}
       <title>Welcome to TextEditor by kkc</title>
       {% endif %}
-    <link rel="stylesheet" type="text/css"  href="Style.css">
+   
     <style>
           
           div#textEditor{
@@ -125,9 +125,25 @@
         Redo.addEventListener("click", function(){
           editor.execCommand("redo", false, null);
         }, false);
+        
+        
+        WYSIWYG.document.addEventListener('keyup', showHTML, false);
+        WYSIWYG.document.addEventListener('paste', showHTML, false);
 
       },false);
+
+
+
+      function showHTML () {
+      document.getElementById('textpad').textContent = WYSIWYG.document.body.innerHTML;
+      return;
+      }
+
     </script>
+    
+
+
+
    
 </head>
 
@@ -149,7 +165,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="news.asp">My Edits</a>
+          <a class="nav-link" href="/myedits/1">My Edits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>

@@ -1,29 +1,37 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, TextForm
+from app.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Textfile
+from app.models import User, EditorData
 from werkzeug.urls import url_parse
 from app.forms import RegistrationForm
-
+import bleach
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
-    form = TextForm()
-
     if request.method == 'POST':
-        print(request.form.get('editor'))
-        return 'Data Posted'
-    
-    
-    
+        new_data = EditorData(html=request.form.get('textpad'))
+        db.session.add(new_data)
+        db.session.commit()
+        return render_template('index.html', title='Home')
+   
+    return render_template('index.html',  title='Home')
 
-    
-        
 
-    return render_template('index.html',  title='Home', form=form)
+@app.route('/display/<int:id>')
+@app.route('/myedits/<int:id>')
+@login_required
+def display(id):
+    data = EditorData.query.get(id)
+    print(data.html)
+
+    return render_template('myedits.html', data=data.html)
+
+
+
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

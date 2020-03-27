@@ -35,8 +35,3 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
-class TextForm(FlaskForm):
-    name = TextAreaField('Name of your file', validators=[DataRequired(), Length(min=1, max=20)] )
-    extension = TextAreaField('.txt', validators=[DataRequired(), Length(min=1, max=5)])
-    text = TextAreaField('Write Something here', validators=[DataRequired(), Length(min=1, max=2500)])
-    submit = SubmitField('Save')
