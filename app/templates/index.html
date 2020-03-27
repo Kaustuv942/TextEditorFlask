@@ -40,12 +40,12 @@
   
         </div> 
 
- 
+    
     <div id="richTextArea">
       <iframe id="WYSIWYG" name="WYSIWYG" frameborder="0" ></iframe>
   
     </div>
-     
+    
     
   </div>
   <br><br>  <br><br>  <br><br>
@@ -69,22 +69,25 @@
 
     });
     </script>
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#button').click(function(){
-    var text = $('#WYSIWYG').val();
-    $('#goes').text(WYSIWYG);
-
-  });
-});
   
+    <script>
+            var editor = WYSIWYG.document;
+            editor.designMode="on";
+          
+           whiplash();{
+            
+            WYSIWYG.document.body.innerHTML = document.getElementById('textpad').textContent;
+
+            };
+        
+    </script>
 
 
-</script>
+
+
+
+
+
 
   
 <script>

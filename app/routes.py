@@ -12,7 +12,7 @@ import bleach
 @login_required
 def index():
 
-    data = EditorData.query.get(1)
+    data = EditorData.query.order_by(EditorData.id.desc()).first()
     print(data.html)
 
 
@@ -20,20 +20,21 @@ def index():
         new_data = EditorData(html=request.form.get('textpad'))
         db.session.add(new_data)
         db.session.commit()
+        return render_template('index.html',  title='Home', data=data.html)
 
-        
    
     return render_template('index.html',  title='Home', data=data.html)
 
 
-@app.route('/display/<int:id>')
-@app.route('/myedits/<int:id>')
+@app.route('/display')
+@app.route('/myedits')
 @login_required
-def display(id):
-    data = EditorData.query.get(id)
-    print(data.html)
+def display():
+    posts = EditorData.query.order_by(EditorData.id.desc()).all()
 
-    return render_template('myedits.html', data=data.html)
+    
+
+    return render_template('myedits.html', posts=posts)
 
 
 

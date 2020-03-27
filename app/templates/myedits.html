@@ -7,6 +7,13 @@
 <br><br>
 
 
-{{ data|safe }}
+{% for post in posts %}
+
+<div>
+    
+        {{post.html|safe}}
+    
+</div>
+{% endfor %}
 
 {% endblock %}

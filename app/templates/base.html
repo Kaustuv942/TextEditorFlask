@@ -39,19 +39,13 @@
           }
          
        
-   
+          body{
+            overflow: auto;
+          }
     
 
 
-            footer{
-          position: absolute;
-          bottom:0;
-          width:100%;
-   				height:30px;  
-   				background:orange;
-  				color:black;
-            }
-
+       
             #editor1 {
             border: 3px inset grey;
             height: 100px;
@@ -86,6 +80,8 @@
               background-color: transparent;
 
           }
+          
+          
     </style>
     <script>
       window.addEventListener("load",function(){
@@ -130,15 +126,22 @@
         WYSIWYG.document.addEventListener('keyup', showHTML, false);
         WYSIWYG.document.addEventListener('paste', showHTML, false);
 
-      },false);
+        },false);
 
 
 
-      function showHTML () {
-      document.getElementById('textpad').textContent = WYSIWYG.document.body.innerHTML;
-      return;
-      }
+        function showHTML () {
+        document.getElementById('textpad').textContent = WYSIWYG.document.body.innerHTML;
+        return;
+        }
 
+        function whiplash(){
+          
+          var myFrame = $("#WYSIWYG").contents().find('body');
+          var textareaValue = $("textpad").val();
+          myFrame.html(textareaValue);
+        }
+        
     </script>
     
 
@@ -148,8 +151,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">TextEditor</a>
+  <div class="fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{{url_for('index')}}">TextEditor</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -165,7 +169,7 @@
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="/myedits/1">My Edits</a>
+          <a class="nav-link" href="/myedits">My Edits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About</a>
@@ -185,6 +189,9 @@
       
     </div>
   </nav>
+  </div>
+
+        
 
  
     
@@ -201,10 +208,20 @@
             {% endif %}
             {% endwith %}
         </h1>
-
+        <br><br><br><br>
         {% block content %}{% endblock %}
-        <footer><center>KKC Production 2020 &copy; </center>
+     
+          <!-- Footer -->
 
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="background-color: orange; color: black; position: relative;">© KKC Production 2020 =
+    <a href="{{ url_for('index')}}"> TextEditorbyKKC</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
 
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
