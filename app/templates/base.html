@@ -41,6 +41,7 @@
        
           body{
             overflow: auto;
+            min-height: 100%;
           }
     
 
@@ -80,6 +81,17 @@
               background-color: transparent;
 
           }
+          footer{
+          position: sticky;
+          min-height: 100%;
+          padding-top: 10px;
+          padding-bottom: 5px;
+          bottom:0;
+          width:100%;
+   				height:40px;  
+   				background:orange;
+  				color:black;
+			}
           
           
     </style>
@@ -211,17 +223,10 @@
         <br><br><br><br>
         {% block content %}{% endblock %}
      
-          <!-- Footer -->
-
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3" style="background-color: orange; color: black; position: relative;">© KKC Production 2020 =
-    <a href="{{ url_for('index')}}"> TextEditorbyKKC</a>
-  </div>
-  <!-- Copyright -->
-
+          
+<footer><center>© KKC Production 2020 =
+  <a href="{{ url_for('index')}}"> TextEditorbyKKC</a> </center>
 </footer>
-<!-- Footer -->
 
 
           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

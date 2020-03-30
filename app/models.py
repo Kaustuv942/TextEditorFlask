@@ -9,7 +9,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    
+    posts = db.relationship('EditorData', backref='author', lazy='dynamic')
 
 
     def set_password(self, password):
@@ -30,5 +30,8 @@ def load_user(id):
 
 class EditorData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    extension= db.Column(db.Text)
     html= db.Column(db.Text)
+    
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

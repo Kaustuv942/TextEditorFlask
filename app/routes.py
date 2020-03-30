@@ -13,18 +13,27 @@ import bleach
 def index():
 
     data = EditorData.query.order_by(EditorData.id.desc()).first()
-    print(data.html)
+    print(data.name)
 
-
+    flag =0
     if request.method == 'POST':
-        new_data = EditorData(html=request.form.get('textpad'))
+        new_data = EditorData(html=request.form.get('textpad'), name=request.form.get('name'), extension=request.form.get('ext') )
+        duplicateName = EditorData.query.filter_by(name=new_data.name).first()
+        if duplicateName is not None:
+            flag=1
+            return render_template('index.html',  title='Home', data=new_data, flag=flag)
         db.session.add(new_data)
         db.session.commit()
-        return render_template('index.html',  title='Home', data=data.html)
+        return render_template('index.html',  title='Home', data=new_data, flag=flag)
 
    
-    return render_template('index.html',  title='Home', data=data.html)
+    return render_template('index.html',  title='Home', data=data, flag=flag)
 
+
+
+    
+        
+        
 
 @app.route('/display')
 @app.route('/myedits')

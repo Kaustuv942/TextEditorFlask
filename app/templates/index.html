@@ -9,7 +9,31 @@
     
     
 
+<form method="POST">
+  
 
+    {% if flag==1 %}
+    <textarea id="name" name="name"></textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea>
+    <center>
+    <span style="color: red;">Choose another name</span></center>
+    {% else %}
+    <center><textarea id="name" name="name">{{ data.name}}</textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
+    
+    
+    
+    {% endif %}
+   
+    
+    <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:block;" > {{ data.html }}</textarea>
+
+  <input type="submit" value="Save" >
+
+
+
+</form>
+
+  <br>
+  
   <div id="textEditor">
     <div id='theRibbon'>
           <button id="boldbutton" title="Bold"><b>B</b></button>
@@ -48,26 +72,37 @@
     
     
   </div>
-  <br><br>  <br><br>  <br><br>
-  <p>Hi this is kkc using jQuery</p>
-  <form method="POST">
-      <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:block;"> {{ data }}</textarea>
-      <input type="submit" value="Save" >
-  
-    
-  </form>
 
+  
+  
+  <br><br>  <br><br>  <br><br>
+  <p>Hi this is kkc no more using jQuery</p>
+  
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
 
 
     <script>
-    $(document).ready(function(){
-       $('p').css('color', 'red');
+    $(document).ready(function ($) {
 
-
+var previousScroll = 20;
+    // scroll functions
+    $(window).scroll(function(e) {
+    
+        // add/remove class to navbar when scrolling to hide/show
+        var scroll = $(window).scrollTop();
+        if (scroll >= previousScroll) {
+            $('.navbar').addClass("navbar-hide");
+        
+        }else if (scroll < previousScroll) {
+            $('.navbar').removeClass("navbar-hide");
+        }
+        previousScroll = scroll;
+    
     });
+    
+})(jQuery);    
     </script>
   
     <script>
