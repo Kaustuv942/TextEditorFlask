@@ -15,16 +15,15 @@
 
 
 
-{% if flag == 1 %}
-<center > <textarea id="name" name="name" ></textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
-<center><span style="color: red;">Choose another name</span></center>
-    
-    
-    
-   
+{% if flag == -1 %}
+<center > <textarea id="name" name="name" placeholder="First Text File" ></textarea> <textarea name="ext" id="ext" placeholder=".txt" default=".txt"></textarea></center>
 
-<center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;"  > {{ data.html }}</textarea></center>
 
+
+
+
+
+<center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;" placeholder="First" ></textarea></center>
 
 
  
@@ -44,7 +43,7 @@
 
    
    {% endif %}
-  <Center><input type="submit" value="Save" ></Center>
+  <Center><input type="submit" value="Save"  class="btn --animated" ></Center>
 
 
 

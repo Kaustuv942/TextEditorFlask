@@ -2,16 +2,27 @@
 
 {% block content %}
 
-<a href="{{ url_for('index') }}"> Add New File</a>
-
+<a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
+        <span>Add New File</span>
+</a>
 <br><br>
 
 
 {% for post in posts %}
 
 <div>
-    
-        {{post.html|safe}}
+      <b><h5>{{ post.name }} : </h5> <br> </b> {{post.html|safe}}  
+
+      <a href="/edit/{{post.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>
+        <br>
+        
+        
+
+        <br>
+
+
+       <br>
+        
     
 </div>
 {% endfor %}
