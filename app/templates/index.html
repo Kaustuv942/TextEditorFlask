@@ -11,22 +11,40 @@
 
 <form method="POST">
   
+  
 
-    {% if flag==1 %}
-    <textarea id="name" name="name"></textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea>
-    <center>
-    <span style="color: red;">Choose another name</span></center>
-    {% else %}
-    <center><textarea id="name" name="name">{{ data.name}}</textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
+
+
+{% if flag == 1 %}
+<center > <textarea id="name" name="name" ></textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
+<center><span style="color: red;">Choose another name</span></center>
     
     
     
-    {% endif %}
    
-    
-    <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:block;" > {{ data.html }}</textarea>
 
-  <input type="submit" value="Save" >
+<center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;"  > {{ data.html }}</textarea></center>
+
+
+
+ 
+
+{% else %}
+   <center > <textarea id="name" name="name" >{{ data.name }}</textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
+  
+    
+    
+    
+    
+    
+    
+   
+
+   <center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;"  > {{ data.html }}</textarea></center>
+
+   
+   {% endif %}
+  <Center><input type="submit" value="Save" ></Center>
 
 
 
@@ -75,8 +93,7 @@
 
   
   
-  <br><br>  <br><br>  <br><br>
-  <p>Hi this is kkc no more using jQuery</p>
+  
   
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
 

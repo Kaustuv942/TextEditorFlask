@@ -10,7 +10,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     posts = db.relationship('EditorData', backref='author', lazy='dynamic')
-
+    
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -35,3 +35,6 @@ class EditorData(db.Model):
     html= db.Column(db.Text)
     
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Post: {}>'.format(self.html)

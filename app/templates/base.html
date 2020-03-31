@@ -61,6 +61,7 @@
             width: 5ex;
             text-align: center;
             padding: 1px 3px;
+            margin-top: 20px;
           }
           div#theRibbon > button{
             color: white;
@@ -82,13 +83,10 @@
 
           }
           footer{
-          position: sticky;
-          min-height: 100%;
-          padding-top: 10px;
-          padding-bottom: 5px;
-          bottom:0;
-          width:100%;
-   				height:40px;  
+				position: absolute;
+				bottom:0;
+				width:100%;
+   				height:30px;  
    				background:orange;
   				color:black;
 			}
@@ -176,20 +174,20 @@
           <a class="nav-link" href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
         </li>
         {% if current_user.is_anonymous %}
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{{ url_for('login') }}">login</a>
         </li>
         {% else %}
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/myedits">My Edits</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item">
          <a class="nav-link"> Hi, {{ current_user.username }}!</a></li>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="{{ url_for('logout') }}">Logout</a></li>
         </li>
         {% endif %}
