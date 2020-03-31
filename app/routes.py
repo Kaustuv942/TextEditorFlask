@@ -31,7 +31,6 @@ def index():
 
 
 
-
     
         
         
@@ -43,8 +42,29 @@ def display():
     posts = EditorData.query.order_by(EditorData.id.desc()).filter_by(author=current_user).all()
 
     
+        
 
     return render_template('myedits.html', posts=posts)
+
+
+@app.route('/edit/<int:id>', methods=['GET', 'POST'] )
+@login_required
+def edit(id):
+    post = EditorData.query.filter_by(id=id).first()
+
+    if request.method == 'POST':
+        new_data = EditorData(html=request.form.get('textpad'), name=request.form.get('name'), extension=request.form.get('ext') )
+        post.name = request.form.get('name')
+        post.extension = request.form.get('ext')
+        post.html = request.form.get('textpad')
+        db.session.commit()
+
+        print('data saved')
+
+
+        return render_template('edit.html', data=new_data)
+
+    return render_template('edit.html', data=post)
 
 
 
