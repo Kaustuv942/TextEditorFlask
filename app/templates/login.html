@@ -1,17 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Sign In</h1>
+<div class="row" >
+    <div class="col-lg-3 col-md-4 col-sm-3" >
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-sm-6" >
+<div id="login_1">
+    <div class="login_2">
+        <p class="title">Login</p>
+        
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
-    <p>
+   
+        <p class="usernamelabel">
         {{ form.username.label }}<br>
+
         {{ form.username(size=32) }}<br>
         {% for error in form.username.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
-    <p>
+    <p class="usernamelabel">
         {{ form.password.label }}<br>
         {{ form.password(size=32) }}<br>
         {% for error in form.password.errors %}
@@ -21,6 +31,11 @@
     <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
     <p>{{ form.submit() }}</p>
 </form>
+</div>
+</div>
 
 <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
 {% endblock %}
+
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6" >

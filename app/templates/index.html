@@ -15,6 +15,12 @@
   <a href="/uploads" target="_blank" class="btn --animated">
     <span>Upload a File</span></a>
 </center>
+
+
+
+
+
+
 </div>
 <div class="col-lg-6 col-md-8 col-sm-12" >
 <form method="POST">
@@ -33,7 +39,7 @@
 
 
 {% if flag == -1 %}
-<center > <textarea id="name" name="name" placeholder="First Text File" style="resize: none;" rows="1" cols="37"" ></textarea> <textarea name="ext" id="ext" placeholder=".txt" style="resize: none;" rows="1" cols="37" default=".txt"></textarea></center>
+<center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="74"" ></textarea> 
 
 
 
@@ -46,7 +52,7 @@
  
 
 {% else %}
-   <center > <textarea id="name" name="name" style="resize: none;" rows="1" cols="37" >{{ data.name }}</textarea> <textarea placeholder=".txt" style="resize: none;" rows="1" cols="37" default=".txt" name="ext" id="ext">{{ data.extension }}</textarea></center>
+   <center > <textarea id="name" name="name" style="resize: none;" rows="1" cols="79" >{{ data.name }}</textarea> </center>
   
     
     

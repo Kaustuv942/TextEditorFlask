@@ -12,8 +12,189 @@
    
     <style>
       @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+      #login_1 {
+                color:yellow; 
+                background:rgb(101,183,255);
+                width:400px;
+                height:450px;
+                padding:75px 0 0 20px;
+                
+                border-top-left-radius:15px;
+                border-bottom-right-radius:15px;
+                box-shadow:15px 15px 10px gray;
+              }
+              .login_2 {
+                color:yellow; 
+                background:rgb(101,183,255);
+                width:350px;
+                height:230px;
+                
+                border:2px yellow double;
+                border-top-left-radius:15px;
+                border-bottom-right-radius:15px;
+              }
+              .title {
+                font-family: monospase;
+                font-size:1.5em;
+                margin:5px 0 0 80px;
+                color:red;
+              }
+              .usernamelabel{
+                font-family: monospase;
+                margin:5px 0 0 20px;
+                color:black;
+              }
+              .usernametxt{
+                font-family: monospase;
+                width: 170px;
+                margin:2px 0 0 15px;
+                color:black;
+              }
+              .submit {
+                float:right;
+                font-family: monospase;
+                width: 70px;
+                margin:15px 20px 0 0;
+                color:black;
+                border-radius:15px;
+                box-shadow: 5px 5px 5px gray;
+                outline:none;
+              }
+              .submit:hover {
+                box-shadow: none;
+              }
 
-                    .container {
+              .reg {
+                float:left;
+                position:absolute;
+                font-family: monospase;
+                width: 70px;
+                margin:15px 0 0 20px;
+                color:black;
+                border-radius:15px;
+                box-shadow: 5px 5px 5px gray;
+                outline:none;
+              }
+              .reg:hover {
+                box-shadow: none;
+              }
+              #remem {
+                display:none;
+              }
+              #remem + label{
+                position:absolute;
+                border-radius:5px;
+                display: inline-block;
+                border:1px solid #d3d3d3;
+                margin:40px 0 0 20px;
+                vertical-align: middle;
+                color:black;
+              }
+              #remem:checked + label
+              {
+                background:#eee;
+              }
+              #remem:checked + label:after
+              {
+                content:"\2714";
+              }
+              a {
+                text-decoration:none;
+              }
+              .for{
+                position:absolute;
+                margin:62px 0 0 20px;
+              }
+
+              .for:hover {
+                color:red;
+              }
+
+              #register_1 {
+                display:none;
+                width:200px;
+                height:300px;
+                background:red;
+                border-top-right-radius:25px;
+                border-bottom-left-radius:25px;
+                filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150)progid:DXImageTransform.Microsoft.gradient(startcolorstr=#eee,endcolorstr=blue,gradientType=0);
+                  -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150)progid:DXImageTransform.Microsoft.gradient(startcolorstr=#eee,endcolorstr=rgb(101,218,255),gradientType=0);
+                background:-moz-linear-gradient(top, yellow, rgba(0, 0, 255, 0.5));  
+                  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#eee), to(rgba(101, 218, 255, 0.5)));  
+                  background:-o-linear-gradient(top, #eee, rgba(101, 218, 255, 0.5));
+              box-shadow:15px 15px 10px gray;
+              }
+
+              .reg_title {
+                color:green;
+                padding-top:10px;
+                padding-left:30px;
+              }
+              .reg_username {
+                margin-top:5px;
+                margin-left:10px;
+              }
+              .new_username{
+                margin-top:-5px;
+                margin-left:5px;
+              }
+              .reg_email {
+                margin-top:-5px;
+                margin-left:10px;
+              }
+              .new_email {
+                margin-top:-5px;
+                margin-left:5px;
+              }
+
+
+              .reg_pass{
+                margin-top:-5px;
+                margin-left:10px;
+              }
+              .new_pass {
+                margin-top:-5px;
+                margin-left:5px;
+              }
+              .reg_confirm_pass{
+                margin-top:-5px;
+                margin-left:10px;
+              }
+              .new_confirm_pass {
+                margin-top:-5px;
+                margin-left:5px;
+              }
+
+              .submit_reg {
+                float:right;
+                font-family: monospase;
+                width: 70px;
+                margin-right:20px;
+                color:black;
+                border-radius:15px;
+                box-shadow: 5px 5px 5px gray;
+                outline:none;
+              }
+              .submit_reg:hover {
+                box-shadow: none;
+              }
+
+
+              .close_reg {
+                float:left;
+                font-family: monospase;
+                width: 70px;
+                margin-left:20px;
+                color:black;
+                border-radius:15px;
+                box-shadow: 5px 5px 5px gray;
+                outline:none;
+              }
+              .close_reg:hover {
+                box-shadow: none;
+              }
+
+                                  .container {
                 padding-top: 1em;
                 margin-top: 1em;
                 border-top: 
@@ -363,96 +544,95 @@
   				color:black;
 			}
           
-            :root {
-        --font: 1rem/1.2 "helvetica", sans-serif;
-        --bg-hover: linear-gradient(
-          135deg,
-          #101ee7 0%,
-          #2654e9 20%,
-          #62d6fa 37%,
-          #fff 50%,
-          #fc35ca 66%,
-          #7559ff 72%,
-          #101ee7 100%
-        );
-        --btn-color: #2e175e;
-      }
+      :root {
+	--font: 1rem/1.2 "helvetica", sans-serif;
+	--bg-hover: linear-gradient(
+		135deg,
+		#101ee7 0%,
+		#2654e9 20%,
+		#62d6fa 37%,
+		#fff 50%,
+		#fc35ca 66%,
+		#7559ff 72%,
+		#101ee7 100%
+	);
+	--btn-color: #2e175e;
+}
 
-      /* formating */
-      main {
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        align-items: center;
-        justify-content: center;
-      }
+/* formating */
+main {
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+}
 
-      /* button */
-      .btn {
-        display: table;
-        text-align: center;
-        color: #ffffff;
-        text-decoration: none;
-        position: relative;
-        font: var(--font);
-        font-weight: bold;
-        padding: 22px 40px;
-        background-color: var(--btn-color);
-        overflow: hidden;
-        margin: 24px;
-      }
+/* button */
+.btn {
+	display: table;
+	text-align: center;
+	color: #ffffff;
+	text-decoration: none;
+	position: relative;
+	font: var(--font);
+	font-weight: bold;
+	padding: 22px 40px;
+	background-color: var(--btn-color);
+	overflow: hidden;
+	margin: 24px;
+}
 
-      .--animated {
-        transition: all 1s;
-      }
+.--animated {
+	transition: all 1s;
+}
 
-      .--animated span {
-        position: relative;
-        z-index: 9;
-      }
+.--animated span {
+	position: relative;
+	z-index: 9;
+}
 
-      .--animated:after {
-        height: 100%;
-        width: 2000px;
-        transition: all 1s;
-        background: var(--bg-hover);
-      }
+.--animated:after {
+	height: 100%;
+	width: 2000px;
+	transition: all 1s;
+	background: var(--bg-hover);
+}
 
-      .--animated:before {
-        height: 26px;
-        width: 100%;
-        top: -50px;
-        z-index: 10;
-        opacity: 0;
-        background-color: rgba(255, 255, 255, 0.15);
-      }
+.--animated:before {
+	height: 26px;
+	width: 100%;
+	top: -50px;
+	z-index: 10;
+	opacity: 0;
+	background-color: rgba(255, 255, 255, 0.15);
+}
 
-      .--animated:hover:before {
-        top: 0;
-        opacity: 1;
-      }
-      .--animated:hover:after {
-        left: -1750px;
-      }
-      .--animated:before,
-      a:after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 7;
-        display: block;
-        content: "";
-      }
-      .--animated:active:before {
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.8);
-      }
-      .--animated:active {
-        transform: scale(0.95);
-        transition: all 200ms;
-      }
-
-          
+.--animated:hover:before {
+	top: 0;
+	opacity: 1;
+}
+.--animated:hover:after {
+	left: -1750px;
+}
+.--animated:before,
+a:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 7;
+	display: block;
+	content: "";
+}
+.--animated:active:before {
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
+}
+.--animated:active {
+	transform: scale(0.95);
+	transition: all 200ms;
+}
+   
     </style>
     <script>
       window.addEventListener("load",function(){
