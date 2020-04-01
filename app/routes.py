@@ -1,11 +1,11 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, Response
 from app import app, db
 from app.forms import LoginForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, EditorData
 from werkzeug.urls import url_parse
 from app.forms import RegistrationForm
-import bleach
+from io import BytesIO
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -46,10 +46,17 @@ def upload():
     db.session.commit()
 
     return 'Saved '+ file.filename +' to the database'
-    
-    
-    
-        
+
+
+@app.route('/download/<int:id>')
+def download(id):
+    post = EditorData.query.filter_by(id=id).first()
+    generator = post.html
+    Name=post.name+post.extension
+    return Response(generator,
+                       mimetype="text/plain",
+                       headers={"Content-Disposition":
+                                    "attachment;"}) 
         
 
 @app.route('/display')
