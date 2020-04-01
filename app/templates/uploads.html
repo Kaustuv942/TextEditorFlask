@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+        <br><br><br><br>
+        <a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
+            <span>Add New File</span></a>
+        
+        
+        
+            <div class="container">
+                <h1> File Input</h1>
+                <form method="POST" action="/upload" enctype="multipart/form-data">
+                
+                    <div class="form-group">
+                        <label for="inputFile"> File input</label>
+                        <input type="file" name="inputFile">
+                    </div>
+                    <button type="submit" class="button">submit</button>
+                
+                </form>
+            </div>
+        
+        
+        
+     
+{% endblock %}

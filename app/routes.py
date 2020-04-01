@@ -30,7 +30,24 @@ def index():
     return render_template('index.html',  title='Home', data=data, flag=flag)
 
 
+@app.route('/uploads', methods=['GET','POST'])
+@login_required
+def uploads():
 
+    return render_template('uploads.html')
+
+@app.route('/upload', methods=['POST'])
+def upload():
+
+    file = request.files['inputFile']
+    
+    newfile = EditorData(name=file.filename, html=file.read(), extension="", author=current_user )
+    db.session.add(newfile)
+    db.session.commit()
+
+    return 'Saved '+ file.filename +' to the database'
+    
+    
     
         
         

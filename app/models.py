@@ -33,7 +33,7 @@ class EditorData(db.Model):
     name = db.Column(db.Text)
     extension= db.Column(db.Text)
     html= db.Column(db.Text)
-    
+   
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
