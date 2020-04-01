@@ -11,11 +11,23 @@
 {% for post in posts %}
 
 <div>
-      <b><h5>{{ post.name }} : </h5> <br> </b> {{post.html|safe}}  
-
-      <a href="/edit/{{post.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>
+      <b><h5>{{ post.name }}{{ post.extension}} :</h5> <a href="#" class="buttonDownload">Download</a> <br>
         <br>
-        
+        </b> {{post.html|safe}} 
+      
+      
+
+      
+      <a href="/edit/{{post.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>
+      
+      <a  href="/delete/{{post.id}}" title="Button slide purple" class="button btnSlide btnPurple">
+        <span class="top" data-content="Delete">Delete</span>
+        <span class="bottom" data-content="Edit">Sure?</span>
+      </a>
+
+
+
+        <br><br><br><br><br>       
         
 
         <br>

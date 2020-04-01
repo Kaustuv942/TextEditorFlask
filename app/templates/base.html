@@ -53,6 +53,176 @@
                 background: #A74982;
               }
 
+              .buttonDownload {
+              display: inline-block;
+              position: relative;
+              padding: 10px 25px;
+              
+              background-color: #4CC713;
+              color: white;
+              
+              font-family: sans-serif;
+              text-decoration: none;
+              font-size: 0.9em;
+              text-align: center;
+              text-indent: 15px;
+            }
+
+            .buttonDownload:hover {
+              background-color: #333;
+              color: white;
+            }
+
+            .buttonDownload:before, .buttonDownload:after {
+              content: ' ';
+              display: block;
+              position: absolute;
+              left: 15px;
+              top: 52%;
+            }
+
+            /* Download box shape  */
+            .buttonDownload:before {
+              width: 10px;
+              height: 2px;
+              border-style: solid;
+              border-width: 0 2px 2px;
+            }
+
+            /* Download arrow shape */
+            .buttonDownload:after {
+              width: 0;
+              height: 0;
+              margin-left: 3px;
+              margin-top: -7px;
+              
+              border-style: solid;
+              border-width: 4px 4px 0 4px;
+              border-color: transparent;
+              border-top-color: inherit;
+              
+              animation: downloadArrow 2s linear infinite;
+              animation-play-state: paused;
+            }
+
+            .buttonDownload:hover:before {
+              border-color: #4CC713;
+            }
+
+            .buttonDownload:hover:after {
+              border-top-color: #4CC713;
+              animation-play-state: running;
+            }
+
+            /* keyframes for the download icon anim */
+            @keyframes downloadArrow {
+              /* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+              0% {
+                margin-top: -7px;
+                opacity: 1;
+              }
+              
+              0.001% {
+                margin-top: -15px;
+                opacity: 0;
+              }
+              
+              50% {
+                opacity: 1;
+              }
+              
+              100% {
+                margin-top: 0;
+                opacity: 0;
+              }
+            }
+            /* 3D */
+            .btnBlueGreen.btnPush {
+              box-shadow: 0px 5px 0px 0px #007144;
+            }
+
+            .btnLightBlue.btnPush {
+              box-shadow: 0px 5px 0px 0px #1E8185;
+            }
+
+            .btnOrange.btnPush {
+              box-shadow: 0px 5px 0px 0px #A66615;
+            }
+
+            .btnPurple.btnPush {
+              box-shadow: 0px 5px 0px 0px #6D184B;
+            }
+
+            .btnPush:hover {
+              margin-top: 15px;
+              margin-bottom: 5px;
+            }
+
+            .btnBlueGreen.btnPush:hover {
+              box-shadow: 0px 0px 0px 0px #007144;
+            }
+
+            .btnLightBlue.btnPush:hover {
+              box-shadow: 0px 0px 0px 0px #1E8185;
+            }
+
+            .btnOrange.btnPush:hover {
+              box-shadow: 0px 0px 0px 0px #A66615;
+            }
+
+            .btnPurple.btnPush:hover {
+              box-shadow: 0px 0px 0px 0px #6D184B;
+            }
+
+              /* SLIDE */
+              .btnSlide.btnBlueGreen {
+                background: 0;
+              }
+
+              .btnSlide .top {
+                position: absolute;
+                top: 0px;
+                left: 0;
+                width: 120px;
+                height: 50px;
+                background: #00AE68;
+                z-index: 10;
+                transition: all 0.2s ;
+                border-radius: 5px;
+              }
+
+              .btnSlide.btnBlueGreen .top {
+                background: #00AE68;
+              }
+
+              .btnSlide.btnLightBlue .top {
+                background: #5DC8CD;
+              }
+
+              .btnSlide.btnOrange .top {
+                background: #FFAA40;
+              }
+
+              .btnSlide.btnPurple .top {
+                background: red;
+              }
+
+              .btnSlide .bottom {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 120px;
+                height: 50px;
+                color: #000;
+                z-index: 5;
+                border-radius: 5px;
+              }
+
+              .btnSlide:hover .top {
+                top: 40px;
+              }
+
+
                       /* FLOAT */
             .btnFloat {
               background: none;
@@ -72,7 +242,7 @@
             }
 
             .btnBlueGreen.btnFloat:before {
-              background: #00AE68;
+              background: rgb(91,165,  216);
             }
 
             .btnLightBlue.btnFloat:before {
@@ -115,7 +285,7 @@
           div#theRibbon{
             border-bottom: none;
             padding: 10px;
-            background-color:rgb(40,110,89);
+            background-color:rgb(70,130,180);
             color: white;
             border-radius: 8px 8px 0px 0px;
 
@@ -165,7 +335,7 @@
 
           }
            div#theRibbon > button:hover{
-             background-color: rgb(20,90,70);
+             background-color: rgb(166,44,43);
              transition: all 0.3s linear 0s;
 
            }
@@ -176,6 +346,7 @@
 
           }
           footer{
+            z-index: 999;
 				  position: fixed;
 				  bottom:0;
 				  width:100%;
