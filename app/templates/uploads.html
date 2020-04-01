@@ -5,23 +5,35 @@
 
 
         <br><br><br><br>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6" >
         <a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
             <span>Add New File</span></a>
+
+            </div>
         
-        
+            
+              <div class="col-lg-6 col-md-8 col-sm-12" >
         
             <div class="container">
-                <h1> File Input</h1>
+              <center>  <h1> Upload Your File For editing</h1></center>
+               
                 <form method="POST" action="/upload" enctype="multipart/form-data">
                 
                     <div class="form-group">
-                        <label for="inputFile"> File input</label>
-                        <input type="file" name="inputFile">
+                     
+                       <center> <input type="file" name="inputFile"></center> 
                     </div>
-                    <button type="submit" class="button">submit</button>
+                   <center><input type="submit" class="btn --animated"></button> </center> 
                 
                 </form>
             </div>
+            </div>
+            
+              <div class="col-lg-3 col-md-4 col-sm-6" ></div>
+
+              </div>
         
         
         

@@ -2,30 +2,31 @@
 
 {% block content %}
 
-<a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
-        <span>Add New File</span>
-</a>
+
 <br><br>
 
-
+<div class="row">
+  <div class="col-lg-9 col-md-9 col-sm-6" >
 {% for post in posts %}
 
 <div>
-      <b><h5>{{ post.name }}{{ post.extension}} :</h5> <a href="/download/{{post.id}}" class="buttonDownload" download="{{post.name+post.extension}}" >Download</a> <br><hr>
+  <center>  <b><h5>{{ post.name }}{{ post.extension}} :</h5></b><a href="/download/{{post.id}}" class="buttonDownload" download="{{post.name+post.extension}}" >Download</a></center>
+  <center>
+    <a href="/edit/{{post.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>  <a  href="/delete/{{post.id}}" title="Button slide purple" class="button btnSlide btnPurple">
+    <span class="top" data-content="Delete">Delete</span>
+    <span class="bottom" data-content="Edit">Sure?</span></a> </center> <br>
 
-        <br>
-        </b> {{post.html|safe}} 
-      
+    <br> <br><br>
+
+   <center> {{post.html|safe}}  </center>
+     
+
+  
+   
       
 
       
-      <a href="/edit/{{post.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>
-      
-      <a  href="/delete/{{post.id}}" title="Button slide purple" class="button btnSlide btnPurple">
-        <span class="top" data-content="Delete">Delete</span>
-        <span class="bottom" data-content="Edit">Sure?</span>
-      </a>
-
+    
 
 
         <br><br><br><br><br>       
@@ -35,9 +36,17 @@
 
 
        <br>
-        
+       <hr>
     
 </div>
+
 {% endfor %}
+</div>
+
+
+<div class="col-lg-3 col-md-3 col-sm-3" >
+  <a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
+    <span>Add New File</span>
+  </a></div>
 
 {% endblock %}

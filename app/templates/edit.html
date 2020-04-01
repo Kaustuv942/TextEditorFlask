@@ -1,50 +1,28 @@
+{% extends "base.html" %} {% block content %} 
 
+<center>
+  <h1> You are editing the file below </h1></center>
+  <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6">
+          <a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
+              <span>Add New File</span>
+          </a>
 
-
-{% extends "base.html" %}
-
-  
-
-{% block content %}
-
-<center><h1> You are editing the file below  </h1> <a href="{{ url_for('index') }}" target="_blank" class="btn --animated">
-  <span>Add New File</span>
-</a></center>
-
-
-
-
-<form method="POST">
-
-
-
-
-
-
-
-<center > <textarea id="name" name="name" >{{ data.name }}</textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
-
-
-
-
-
-
-
-
-
-<center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;"  > {{ data.html }}</textarea></center>
-
-
-<Center><input type="submit" value="Save"  class="btn --animated" ></Center>
-
-
-
-</form>
-
+      </div>
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <form method="POST">
+            <Center><input type="submit" value="Save" class="btn --animated"></Center>
+            <center> <textarea id="name" style="resize: none;" rows="1" cols="37" name="name">{{ data.name }}</textarea> <textarea style="resize: none;" rows="1" cols="37" name="ext" id="ext">{{ data.extension }}</textarea></center>
+            <center> <textarea id="textpad" name="textpad" style="width:500px;height:200px;display:none;"> {{ data.html }}</textarea></center>
+            
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+      </div>
+  </div>
 <br>
-
 <div id="textEditor">
-<div id='theRibbon'>
+  <div id='theRibbon'>
       <button id="boldbutton" title="Bold"><b>B</b></button>
       <button id="italicbutton" title="Italic"><em>I</em></button>
       <button id="underlinebutton" title="Underline"><u>U</u></button>
@@ -56,92 +34,49 @@
           <option value="cursive"> Cursive</option>
           <option value="sans-serif"> Sans-Serif</option>
           <option value="Calibri"> Calibri</option>
-
-
       </select>
       <select id="fontSizeChanger">
-        <script>
-          for(var i=1; i<20;i++){
-            i++;
-            document.write("<option value='"+i+"'>"+i+"</option>");
-          }
-        </script>
+          <script>
+              for (var i = 1; i < 20; i++) {
+                  i++;
+                  document.write("<option value='" + i + "'>" + i + "</option>");
+              }
+          </script>
       </select>
       <button id="Undo" title="Undo">&larr;</button>
       <button id="Redo" title="Redo">&rarr;</button>
-
-
-    </div> 
-
-
-<div id="richTextArea">
-  <iframe id="WYSIWYG" name="WYSIWYG" frameborder="0" ></iframe>
-
+  </div>
+  <div id="richTextArea">
+      <iframe id="WYSIWYG" name="WYSIWYG" frameborder="0"></iframe>
+  </div>
 </div>
-
-
-</div>
-
-
-
-
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
-
-
-
 <script>
-$(document).ready(function ($) {
-
-var previousScroll = 20;
-// scroll functions
-$(window).scroll(function(e) {
-
-    // add/remove class to navbar when scrolling to hide/show
-    var scroll = $(window).scrollTop();
-    if (scroll >= previousScroll) {
-        $('.navbar').addClass("navbar-hide");
-    
-    }else if (scroll < previousScroll) {
-        $('.navbar').removeClass("navbar-hide");
-    }
-    previousScroll = scroll;
-
-});
-
-})(jQuery);    
+  $(document).ready(function($) {
+      var previousScroll = 20;
+      // scroll functions
+      $(window).scroll(function(e) {
+          // add/remove class to navbar when scrolling to hide/show
+          var scroll = $(window).scrollTop();
+          if (scroll >= previousScroll) {
+              $('.navbar').addClass("navbar-hide");
+          } else if (scroll < previousScroll) {
+              $('.navbar').removeClass("navbar-hide");
+          }
+          previousScroll = scroll;
+      });
+  })(jQuery);
 </script>
-
 <script>
-        var editor = WYSIWYG.document;
-        editor.designMode="on";
-      
-       whiplash();{
-        
-        WYSIWYG.document.body.innerHTML = document.getElementById('textpad').textContent;
-
-        };
-    
+  var editor = WYSIWYG.document;
+  editor.designMode = "on";
+  whiplash(); {
+      WYSIWYG.document.body.innerHTML = document.getElementById('textpad').textContent;
+  };
 </script>
-
-
-
-
-
-
-
-
-
 <script>
-var fonts=document.querySelectorAll("select#fontChanger>option");
-for (var i=0 ;i < fonts.length; i++){
-fonts[i].style.fontFamily = fonts[i].value;
-
-}
-</script>
-
-
-
-{% endblock %}
-
+  var fonts = document.querySelectorAll("select#fontChanger>option");
+  for (var i = 0; i < fonts.length; i++) {
+      fonts[i].style.fontFamily = fonts[i].value;
+  }
+</script> {% endblock %}

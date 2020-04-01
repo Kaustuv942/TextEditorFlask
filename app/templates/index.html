@@ -9,14 +9,14 @@
 
 
 
-
-
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6" >
 <center>
   <a href="/uploads" target="_blank" class="btn --animated">
     <span>Upload a File</span></a>
 </center>
-  
-    
+</div>
+<div class="col-lg-6 col-md-8 col-sm-12" >
 <form method="POST">
   
   
@@ -27,12 +27,13 @@
 
   
   
-  
+  <Center><input type="submit" value="Save"  class="btn --animated" ></Center>
+
   
 
 
 {% if flag == -1 %}
-<center > <textarea id="name" name="name" placeholder="First Text File" ></textarea> <textarea name="ext" id="ext" placeholder=".txt" default=".txt"></textarea></center>
+<center > <textarea id="name" name="name" placeholder="First Text File" style="resize: none;" rows="1" cols="37"" ></textarea> <textarea name="ext" id="ext" placeholder=".txt" style="resize: none;" rows="1" cols="37" default=".txt"></textarea></center>
 
 
 
@@ -45,7 +46,7 @@
  
 
 {% else %}
-   <center > <textarea id="name" name="name" >{{ data.name }}</textarea> <textarea name="ext" id="ext">{{ data.extension }}</textarea></center>
+   <center > <textarea id="name" name="name" style="resize: none;" rows="1" cols="37" >{{ data.name }}</textarea> <textarea placeholder=".txt" style="resize: none;" rows="1" cols="37" default=".txt" name="ext" id="ext">{{ data.extension }}</textarea></center>
   
     
     
@@ -59,12 +60,13 @@
 
    
    {% endif %}
-  <Center><input type="submit" value="Save"  class="btn --animated" ></Center>
-
+  
 
 
 </form>
+</div>
 
+<div class="col-lg-3 col-md-4 col-sm-6" ></div>
   <br>
   
   <div id="textEditor">

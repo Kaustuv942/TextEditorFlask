@@ -52,7 +52,7 @@ def upload():
 def download(id):
     post = EditorData.query.filter_by(id=id).first()
     generator = post.html
-    Name=post.name+post.extension
+   
     return Response(generator,
                        mimetype="text/plain",
                        headers={"Content-Disposition":
