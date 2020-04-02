@@ -25,7 +25,7 @@
     
     
     {% if flag == -1 %}
-    <center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="79"" ></textarea> 
+    <center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="79"  ></textarea> 
     
     
     
@@ -61,7 +61,28 @@
 
 
 
+         <script>
 
+$(document).delegate('#textpad', 'keydown', function(e) {
+  var keyCode = e.keyCode || e.which;
+
+  if (keyCode == 9) {
+    e.preventDefault();
+    var start = this.selectionStart;
+    var end = this.selectionEnd;
+
+    // set textarea value to: text before caret + tab + text after caret
+    $(this).val($(this).val().substring(0, start)
+                + "\t"
+                + $(this).val().substring(end));
+
+    // put caret at right position again
+    this.selectionStart =
+    this.selectionEnd = start + 1;
+  }
+});
+
+            </script>
 
 
 
