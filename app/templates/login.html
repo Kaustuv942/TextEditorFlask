@@ -2,13 +2,14 @@
 
 {% block content %}
 <div class="row" >
-    <div class="col-lg-3 col-md-4 col-sm-3" >
+    <div class="col-lg-4 col-md-1 col-sm-1" >
         </div>
 
         <div class="col-lg-6 col-md-8 col-sm-6" >
 <div id="login_1">
+    <p class="title">Login</p>
     <div class="login_2">
-        <p class="title">Login</p>
+        
         
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
@@ -28,14 +29,20 @@
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
-    <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-    <p>{{ form.submit() }}</p>
+    <p class="usernamelabel">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+    <p class="usernamelabel">{{ form.submit() }}</p>
 </form>
-</div>
+
+
 </div>
 
-<p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-{% endblock %}
+<p class="usernamelabel">New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+</div>
+
+
 
 </div>
 <div class="col-lg-3 col-md-4 col-sm-6" >
+    </div>
+
+    {% endblock %}

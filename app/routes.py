@@ -109,16 +109,7 @@ def upload():
 
     return 'Saved '+ file.filename +' to the database'
 
-@app.route('/uploadcode', methods=['POST'])
-def uploadcode():
 
-    file = request.files['inputFile']
-
-    newfile = CodeData(name=file.filename, code=file.read(), author=current_user)
-    db.session.add(newfile)
-    db.session.commit()
-
-    return 'Saved '+ file.filename+ ' to the codebase'
 
 
 @app.route('/download/<int:id>')

@@ -3,32 +3,44 @@
 {% block content %}
 
 
-  
+<div class="row" >
+
+    <div class="col-lg-3 col-md-1 col-sm-1" >
+    </div>
+
+    <div class="col-lg-6 col-md-8 col-sm-6" >
+
+        <div id="login_1">
+            <p class="title">Register</p>
+            <div class="login_2">
+                
+                
+
     <form action="" method="post">
 
         {{ form.hidden_tag() }}
-        <p>
+        <p class="usernamelabel">
             {{ form.username.label }}<br>
             {{ form.username(size=32) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p class="usernamelabel">
             {{ form.email.label }}<br>
             {{ form.email(size=64) }}<br>
             {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p class="usernamelabel">
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>
+        <p class="usernamelabel">
             {{ form.password2.label }}<br>
             {{ form.password2(size=32) }}<br>
             {% for error in form.password2.errors %}
@@ -37,5 +49,12 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+            </div>
+            </div>
+
+    </div>
+    </div>
+    
+            
     
 {% endblock %}
