@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block content %} 
+
+<center>
+  <h1> You are editing the Code below </h1></center>
+  <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6">
+          <a href="/codingtab" target="_blank" class="btn --animated">
+              <span>Add A new Code</span>
+          </a>
+
+      </div>
+      <div class="col-lg-6 col-md-8 col-sm-12">
+        <form method="POST">
+            <Center><input type="submit" value="Save" class="btn --animated"></Center>
+            <center > <textarea id="name" name="name" style="resize: none;" rows="1" cols="79" >{{ code.name }}</textarea> </center>
+            <center> <textarea id="textpad" name="textpad" style="width:750px;height:600px;display:block;"> {{ code.code }}</textarea></center>
+            
+        </form>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+      </div>
+  </div>
+ {% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6" >
+       
+    </div>
+
+<div class="col-lg-6 col-md-8 col-sm-12" >
+    <form method="POST">
+      
+      
+     
+    
+    
+    
+    
+      
+      
+      <Center><input type="submit" value="Save"  class="btn --animated" ></Center>
+    
+      
+    
+    
+    {% if flag == -1 %}
+    <center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="79"" ></textarea> 
+    
+    
+    
+    
+    
+    <code>
+     <textarea id="textpad" name="textpad" style="width:750px;height:600px;display:block;" placeholder="First Code" ></textarea>
+    </code>
+    
+     
+    
+    {% else %}
+      <textarea id="name" name="name" style="resize: none;" rows="1" cols="79" >{{ code.name }}</textarea> 
+      
+        
+        
+        
+        
+        
+        
+       
+    <code>
+        <textarea id="textpad" name="textpad" style="width:750px;height:600px;display:block;"  > {{ code.code }}</textarea>
+    </code>
+       
+       {% endif %}
+      
+    
+    
+    </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
