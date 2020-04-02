@@ -110,89 +110,7 @@
                 color:red;
               }
 
-              #register_1 {
-                display:none;
-                width:200px;
-                height:300px;
-                background:red;
-                border-top-right-radius:25px;
-                border-bottom-left-radius:25px;
-                filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150)progid:DXImageTransform.Microsoft.gradient(startcolorstr=#eee,endcolorstr=blue,gradientType=0);
-                  -ms-filter:alpha(opacity=100 finishopacity=50 style=1 startx=0,starty=0,finishx=0,finishy=150)progid:DXImageTransform.Microsoft.gradient(startcolorstr=#eee,endcolorstr=rgb(101,218,255),gradientType=0);
-                background:-moz-linear-gradient(top, yellow, rgba(0, 0, 255, 0.5));  
-                  background:-webkit-gradient(linear, 0 0, 0 bottom, from(#eee), to(rgba(101, 218, 255, 0.5)));  
-                  background:-o-linear-gradient(top, #eee, rgba(101, 218, 255, 0.5));
-              box-shadow:15px 15px 10px gray;
-              }
 
-              .reg_title {
-                color:green;
-                padding-top:10px;
-                padding-left:30px;
-              }
-              .reg_username {
-                margin-top:5px;
-                margin-left:10px;
-              }
-              .new_username{
-                margin-top:-5px;
-                margin-left:5px;
-              }
-              .reg_email {
-                margin-top:-5px;
-                margin-left:10px;
-              }
-              .new_email {
-                margin-top:-5px;
-                margin-left:5px;
-              }
-
-
-              .reg_pass{
-                margin-top:-5px;
-                margin-left:10px;
-              }
-              .new_pass {
-                margin-top:-5px;
-                margin-left:5px;
-              }
-              .reg_confirm_pass{
-                margin-top:-5px;
-                margin-left:10px;
-              }
-              .new_confirm_pass {
-                margin-top:-5px;
-                margin-left:5px;
-              }
-
-              .submit_reg {
-                float:right;
-                font-family: monospase;
-                width: 70px;
-                margin-right:20px;
-                color:black;
-                border-radius:15px;
-                box-shadow: 5px 5px 5px gray;
-                outline:none;
-              }
-              .submit_reg:hover {
-                box-shadow: none;
-              }
-
-
-              .close_reg {
-                float:left;
-                font-family: monospase;
-                width: 70px;
-                margin-left:20px;
-                color:black;
-                border-radius:15px;
-                box-shadow: 5px 5px 5px gray;
-                outline:none;
-              }
-              .close_reg:hover {
-                box-shadow: none;
-              }
 
                                   .container {
                 padding-top: 1em;
@@ -714,6 +632,7 @@ a:after {
         <li class="nav-item active">
           <a class="nav-link" href="{{ url_for('index') }}">Home<span class="sr-only">(current)</span></a>
         </li>
+        
         {% if current_user.is_anonymous %}
         <li class="nav-item active">
           <a class="nav-link" href="{{ url_for('login') }}">login</a>
@@ -721,6 +640,12 @@ a:after {
         {% else %}
         <li class="nav-item active">
           <a class="nav-link" href="/myedits">My Edits</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/codingtab">Write A Code<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/mycodes">My Codes</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="/about">About</a>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<br><br>
+
+<div class="row">
+  <div class="col-lg-9 col-md-9 col-sm-6" >
+{% for code in codes %}
+
+<div>
+  <center>  <b><h5>{{ code.name }} :</h5></b><a href="/downloadcode/{{code.id}}" class="buttonDownload" download="{{code.name}}" >Download</a></center>
+  <center>
+    <a href="/editcodes/{{code.id}}" title="Edit" class="button btnFloat btnBlueGreen">Edit</a>  <a  href="/deletecodes/{{code.id}}" title="Button slide purple" class="button btnSlide btnPurple">
+    <span class="top" data-content="Delete">Delete</span>
+    <span class="bottom" data-content="Edit">Sure?</span></a> </center> <br>
+
+    <br> <br><br>
+
+   
+     
+
+  
+   
+      
+
+      
+    
+
+
+
+        <br>
+
+
+       <br>
+       <hr>
+    
+</div>
+
+{% endfor %}
+</div>
+
+
+<div class="col-lg-3 col-md-3 col-sm-3" >
+  <a href="/codingtab" target="_blank" class="btn --animated">
+    <span>Add A New Code</span>
+  </a></div>
+
+{% endblock %}
