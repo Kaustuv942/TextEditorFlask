@@ -2,44 +2,61 @@
 
 {% block content %}
 <div class="row" >
-    <div class="col-lg-4 col-md-1 col-sm-1" >
+    <div class="col-lg-3 col-md-1 col-sm-1" >
+        <h1 style="color: yellow;">
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </h1>
         </div>
 
-        <div class="col-lg-6 col-md-8 col-sm-6" >
-<div id="login_1">
-    <p class="title">Login</p>
-    <div class="login_2">
+        <div class="col-lg-5 col-md-4 col-sm-6" >
+
+
+            <div class="container">
+                <div class="logo">Login</div>
+                <div class="login-item">
         
+
         
-<form action="" method="post" novalidate>
+<form action="" method="post" novalidate class="form form-login">
     {{ form.hidden_tag() }}
+
+
+
+    <div class="form-field">
+        <label class="user" for="login-username"><span class="hidden">Username</span></label>
+        <input id="login-username" name="username" type="text" class="form-input" placeholder="Username" required>
+      </div>
+
+      <div class="form-field">
+        <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+        <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
+      </div>
+      
+      <div class="form-field">
+        <input type="submit" value="Log in">
+      </div>
+
+
+
+
+
    
-        <p class="usernamelabel">
-            <br>
-            <br>
-            <br>
-        {{ form.username.label }}<br>
-
-        {{ form.username(size=32) }}<br>
-        {% for error in form.username.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p class="usernamelabel">
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}<br>
-        {% for error in form.password.errors %}
-        <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-    </p>
-    <p class="usernamelabel">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-    <p class="usernamelabel">{{ form.submit() }}</p>
 </form>
-
-
-</div>
-
+<br>
 <p class="usernamelabel">New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+</div>
+<br>
+<br>
+
 </div>
 
 
@@ -47,5 +64,23 @@
 </div>
 <div class="col-lg-3 col-md-4 col-sm-6" >
     </div>
+
+    <div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-2" >
+
+  
+  
+  
+  
+  
+  --
+  </div>
+  <div class="col-lg-6 col-md-8 col-sm-12" >
+
+	
+	</div>
+	
+	</div>
+	
 
     {% endblock %}

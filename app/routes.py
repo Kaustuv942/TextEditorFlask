@@ -32,7 +32,7 @@ def index():
                 new_data = EditorData(html=request.form.get('textpad'), name=request.form.get('name'), author=current_user )
                 db.session.add(new_data)
                 db.session.commit()                
-                return render_template('codingtab.html',  title='Home', data=new_data, flag=flag)
+                return render_template('index.html',  title='Home', data=new_data, flag=flag)
 
         else:
             print('Data saved as new file')
