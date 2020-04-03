@@ -39,18 +39,18 @@
                   display: flex;  
                   flex-direction: column;
                 }
-                .logo{
-  font-family: "museo-slab";  
-  font-size:20px;
-  text-align: center;
-  padding: 20px 20px 0;
-  margin:0;
-}
+                              .logo{
+                font-family: "museo-slab";  
+                font-size:20px;
+                text-align: center;
+                padding: 20px 20px 0;
+                margin:0;
+              }
 
 .login-item {
 	color: #ffff;
 	padding:25px 25px 0;
-	margin: 20px 20px 0;	
+	margin: 22px 22px 0;	
 	border-radius: 3px;
 }
 
@@ -67,15 +67,32 @@ input {
 
 .user:before {
   content: '\f007';
-  font: 14px fontawesome;
+  font: 20px fontawesome;
+	color: #5b5b5b;
+}
+
+.mail:before{
+  content: '\f0e0';
+  font: 20px fontawesome;
 	color: #5b5b5b;
 }
 
 .lock:before {
   content: '\f023';
-  font: 14px fontawesome;
+  font: 20px fontawesome;
 	color: #5b5b5b;
 }
+.signin:before {
+  content: '\f090';
+  font: 20px fontawesome;
+	color: #5b5b5b;
+}
+.signout:before {
+  content: '\f08b';
+  font: 20px fontawesome;
+	color: #5b5b5b;
+}
+
 
 .form input[type="password"], .form input[type="text"], .form input[type="submit"] {
   width: 100%;
@@ -233,7 +250,7 @@ input {
               animation-play-state: running;
             }
             textarea {  
-                background-color:rgb(70,130,180); 
+                background-color:rgb(230, 78, 86) ;
                 color: white;
                 padding: 10px;
                 line-height: 1.5;
@@ -412,13 +429,13 @@ input {
           div#theRibbon{
             border-bottom: none;
             padding: 10px;
-            background-color:rgb(70,130,180);
+            background-color:rgb(230, 78, 86);
             color: white;
             border-radius: 8px 8px 0px 0px;
 
           }
           div#richTextArea{
-            border: 2px solid rgb(40,110,89);
+            border: 2px solid rgb(228, 231, 27);
             height: 100%;
             width: 750px;
             
@@ -432,6 +449,7 @@ input {
        
           body{
             margin-top: 100px;
+            margin-bottom: 50px;
             display: flex;
             
               color: white;
@@ -610,7 +628,7 @@ a:after {
   outline: 5px red solid;
   height: 400px;
   width:  600px;
-  padding-top: 60px;
+  padding-top: 120px;
   background-image: 
    url("https://i.ibb.co/GFJzbVX/account-opacity.png");
 
@@ -686,7 +704,7 @@ a:after {
 
 <body>
   <div class="fixed-top">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-end">
+  <nav class="navbar navbar-expand-md bg-primary navbar-dark justify-content-end">
     <a class="navbar-brand" href="{{url_for('index')}}">TextEditor</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -745,7 +763,8 @@ a:after {
   </nav>
 
 
-    
+    <br>
+    <br>
    
     
                 {% block content %}      {% endblock %}         

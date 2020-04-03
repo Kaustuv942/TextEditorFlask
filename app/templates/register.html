@@ -4,50 +4,70 @@
 
 
 <div class="row" >
-
     <div class="col-lg-3 col-md-1 col-sm-1" >
-    </div>
+        <h1 style="color: yellow;">
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </h1>
+        </div>
 
-    <div class="col-lg-6 col-md-8 col-sm-6" >
+        <div class="col-lg-5 col-md-4 col-sm-6" >
 
-        <div id="login_1">
-            <p class="title">Register</p>
-            <div class="login_2">
+        <div class="container">
+            <div class="logo">Register New Account</div>
+            <div class="login-item">
                 
                 
 
-    <form action="" method="post">
+    <form action="" method="post" class="form form-login">
 
         {{ form.hidden_tag() }}
-        <p class="usernamelabel">
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
-            {% for error in form.username.errors %}
+        <div class="form-field">
+            <label class="user" for="login-username" ><span class="hidden">Username</span></label>
+            <input id="login-username" name="username" type="text" class="form-input" placeholder="Username" required>
+            
+        </div>
+        {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p class="usernamelabel">
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
-            {% for error in form.email.errors %}
+        <div class="form-field">
+            <label class="mail" for="login-username" ><span class="hidden">Email</span></label>
+            <input id="login-username" name="email" type="text" class="form-input" placeholder="Email" required>
+             </div>
+        {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            <br>
+            {% endfor %}
+        <div class="form-field">
+            <label class="lock" for="login-password"><span class="hidden">Password</span></label>
+            <input id="login-password" name="password" type="password" class="form-input" placeholder="Password" required>
+        </div>
+        {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]
+            <br></span>
+            {% endfor %}
+        <div class="form-field">
+            <label class="lock" for="login-password"><span class="hidden">Confirm Password</span></label>
+            <input id="login-password" name="password2" type="password" class="form-input" placeholder="Confirm Password" required>
+          
+            
+        </div>
+        {% for error in form.password2.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p class="usernamelabel">
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
-            {% for error in form.password.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p class="usernamelabel">
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
-            {% for error in form.password2.errors %}
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
+        <p><a href="{{ url_for('login') }}">Login to your Account</a></p>
+        <div class="form-field">
+            
+            <input type="submit" value="Sign up">
+          </div>
     </form>
             </div>
             </div>

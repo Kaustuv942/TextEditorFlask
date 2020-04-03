@@ -4,41 +4,34 @@
 {% block content %}
 
 <div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6" >
+    <div class="col-lg-2 col-md-1 col-sm-2" >
        
     </div>
 
 <div class="col-lg-6 col-md-8 col-sm-12" >
     <form method="POST">
       
-      
-     
-    
-    
-    
-    
-      
-      
-      <Center><input type="submit" value="Save"  class="btn --animated" ></Center>
+        
+      <Center><input type="submit" value="Save"  class="btn " ></Center>
     
       
     
     
     {% if flag == -1 %}
-    <center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="79"  ></textarea> 
+    <center > <textarea id="name" name="name" placeholder="First Text File.txt" style="resize: none;" rows="1" cols="134"  ></textarea> 
     
     
     
     
     
     <code>
-     <textarea id="textpad" name="textpad" style="width:750px;height:600px;display:block;" placeholder="First Code" ></textarea>
+     <textarea id="textpad" name="textpad" style="width:1240px;height:650px;display:block;" placeholder="First Code" ></textarea>
     </code>
     
      
     
     {% else %}
-      <textarea id="name" name="name" style="resize: none;" rows="1" cols="79" >{{ code.name }}</textarea> 
+      <textarea id="name" name="name" style="resize: none;" rows="1" cols="134px" >{{ code.name }}</textarea> 
       
         
         
@@ -48,7 +41,7 @@
         
        
     <code>
-        <textarea id="textpad" name="textpad" style="width:750px;height:600px;display:block;"  > {{ code.code }}</textarea>
+        <textarea id="textpad" name="textpad" style="width:1240px;height:650px;display:block;"  > {{ code.code }}</textarea>
     </code>
        
        {% endif %}
